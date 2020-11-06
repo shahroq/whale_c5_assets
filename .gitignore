@@ -1,0 +1,11 @@
+.git
+*.vscode
+package-lock.json
+*copy*
+gulpfile.js
+
+css/src/bak/*
+js/src/bak/*
+
+_docs/*
+node_modules/

@@ -1,0 +1,26 @@
+/**
+ * Whale Assets: Livesearch Styles
+ */
+
+[data-livesearch-form-pod] {
+  margin-bottom: 10px !important;
+
+  [data-livesearch-input] {
+  }
+  [data-livesearch-length] {
+    min-width: 52px !important;
+  }
+  span.fa {
+    pointer-events: initial;
+    color: #dedede !important;
+    cursor: pointer;
+  }
+  &.has-success {
+    span.fa {
+      color: #3c763d !important;
+    }
+    input {
+      background-color: rgba(60, 118, 61, 0.05) !important;
+    }
+  }
+}

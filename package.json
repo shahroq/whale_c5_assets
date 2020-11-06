@@ -1,0 +1,38 @@
+{
+  "name": "whale_c5_assets",
+  "version": "1.0.0",
+  "description": "A collection of js modules & scss partials used in whale c5 add-ons & themes",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "rollup": "^2.26.9",
+    "rollup-plugin-terser": "^7.0.0",
+    "sass": "^1.26.10"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass:build": "npx sass --no-source-map --style=compressed css/app.scss css/app.css",
+    "sass:watch": "npx sass --watch css/app.scss css/app.css",
+    "rollup:build": "npx rollup --config",
+    "rollup:watch": "npx rollup --config --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shahroq/whale_c5_assets.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shahroq/whale_c5_assets/issues"
+  },
+  "homepage": "https://github.com/shahroq/whale_c5_assets#readme",
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true,
+    "printWidth": 120
+  }
+}

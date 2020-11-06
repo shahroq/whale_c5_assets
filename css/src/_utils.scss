@@ -1,0 +1,49 @@
+/**
+ * Whale Assets: Utils
+ */
+
+// spacing
+$sizes: 0 0, 2 2px, 5 5px;
+$directions: 'l' 'left', 'r' 'right', 't' 'top', 'b' 'bottom';
+
+@each $s_abr, $s in $sizes {
+  @each $d_abr, $d in $directions {
+    .p#{$d_abr}-#{$s_abr} {
+      padding-#{$d}: $s !important;
+    }
+    .m#{$d_abr}-#{$s_abr} {
+      margin-#{$d}: $s !important;
+    }
+  }
+}
+
+// display
+.d-block {
+  display: block !important;
+}
+.d-none {
+  display: none !important;
+}
+
+// opacity
+.op-0 {
+  opacity: 0;
+}
+
+// cursor
+.c-move {
+  cursor: move;
+}
+
+// vertical-align
+.align-middle {
+  vertical-align: middle !important;
+}
+
+// disabled link
+a.disabled {
+  i {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

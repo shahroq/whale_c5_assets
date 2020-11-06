@@ -1,0 +1,54 @@
+/**
+ * Whale Assets: BS3 Changes for slides tab
+ */
+
+&#form_slider_design label {
+  /* it mess with color picker */
+  /* display:none; */
+}
+
+div.ccm-color-swatch-wrapper div.ccm-color-swatch {
+  /* align color picker with textfields */
+  top: -4px;
+}
+
+/* slides editor */
+.ccm-slide-entries {
+  /* padding-bottom: 30px; */
+  position: relative;
+  .ccm-slide-entry {
+    border: 2px solid rgba(9, 183, 91, 1);
+    &.new-slide {
+      border: 2px solid rgba(40, 240, 134, 1);
+    }
+
+    .ccm-pick-slide-image {
+      padding: 5px 15px;
+      cursor: pointer;
+      background: #dedede;
+      border: 1px solid #cdcdcd;
+      text-align: center;
+      vertical-align: center;
+
+      img {
+        max-width: 100%;
+      }
+    }
+
+    /* make icon more prevalent */
+    .show-hide i {
+      &.fa-chevron-up {
+        /* open */
+        padding: 0 3px 7px 3px;
+        background-color: #fdfdfd;
+        border-bottom: 1px solid #333;
+      }
+      &.fa-chevron-down {
+        /* close */
+        padding: 0 3px 0 3px;
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #a6a6a6;
+      }
+    }
+  }
+}

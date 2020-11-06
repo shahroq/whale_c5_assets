@@ -1,0 +1,163 @@
+/**
+ * Whale Assets: Stats
+ */
+
+// charts
+.graph-container .graph-container-inner {
+  padding: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 2px #eee;
+  margin-bottom: 10px;
+  background-color: white;
+  min-height: 450px;
+}
+
+// tables
+table {
+  background-color: white !important;
+  margin-bottom: 5px !important;
+  table-layout: fixed;
+  margin-bottom: 10px !important;
+
+  caption {
+    font-weight: bold !important;
+  }
+  /*
+  &.table-summary {
+  }
+  */
+
+  &.table-visitors {
+    tbody {
+      background-color: #fbfbfb;
+    }
+    th {
+      font-weight: 100;
+      font-size: 13px;
+    }
+    tr {
+      th:nth-child(1) {
+        width: 15%;
+      }
+      th:nth-child(2) {
+        width: 5%;
+      }
+      th:nth-child(3) {
+        width: 15%;
+      }
+      th:nth-child(4) {
+        width: 15%;
+      }
+      th:nth-child(5) {
+        width: 30%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &.table-visitors-header {
+    th {
+      font-weight: 700;
+    }
+  }
+
+  &.table-visitors-recentvisitors {
+    margin-bottom: 5px !important;
+
+    thead {
+    }
+    tbody {
+    }
+    th,
+    td {
+      font-weight: 100;
+      font-size: 13px;
+      i,
+      .label {
+        margin-right: 3px;
+      }
+    }
+    tr {
+      th:nth-child(1) {
+        width: 15%;
+      }
+      th:nth-child(2) {
+        width: 5%;
+      }
+      th:nth-child(3) {
+        width: 15%;
+      }
+      th:nth-child(4) {
+        width: 15%;
+      }
+      th:nth-child(5) {
+        width: 30%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  &.table-header {
+    th {
+      font-weight: 700;
+    }
+    &[data-id] th {
+      font-weight: 100;
+    }
+  }
+}
+
+img.flag {
+  margin-right: 5px;
+}
+
+.fa.f-right {
+  float: right;
+  opacity: 0.5;
+}
+.fa.f-right:after {
+  clear: both;
+}
+
+textarea#embed {
+  cursor: text;
+}
+
+div[data-search-element='wrapper'] {
+  margin-bottom: 20px;
+}
+div[data-search-element='wrapper'] label {
+  height: 40px;
+  line-height: 40px;
+}
+
+.btn-group button {
+  font-size: 12px !important;
+}
+
+div.ccm-search-fields-row {
+  padding-top: 10px;
+}
+.ccm-search-fields-row label {
+  margin-top: 5px;
+}
+#date-period .ccm-search-field-content {
+  display: inline-block;
+}
+
+/*
+#clear-log-result {
+  margin-top: 15px;
+}
+*/
+
+/*
+a.visitors-tracker {
+  border: 1px solid red;
+  padding: 5px;
+}
+*/

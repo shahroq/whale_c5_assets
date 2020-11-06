@@ -1,0 +1,43 @@
+/**
+ * Whale Assets: Table Designer Styles
+ */
+
+#table-designer {
+  width: auto !important;
+  
+  .cell {
+    display: inline-table;
+    width: 100px;
+    /*min-height: 52px;*/
+    margin: 0 3px 4px 0;
+    padding: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  .cell-left {
+    width: 130px;
+  }
+  .table-header {
+  }
+  .table-row {
+  }
+  .cell-top,
+  .cell-left {
+    padding: 9px;
+    .btn {
+      min-width: 24px;
+      margin-right: 2px;
+    }
+  }
+  .table-row-bold {
+    .cell:not(:first-child) {
+      background-color: #ededed;
+      /*border: 1px solid #bbb;*/
+      font-weight: bold;
+    }
+  }
+  .form-control {
+    display: inline-block;
+  }
+}

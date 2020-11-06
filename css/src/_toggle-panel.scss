@@ -1,0 +1,50 @@
+/**
+ * Whale Assets: Toggle Panel
+ */
+
+[data-toggle-panel] {
+  > h2 {
+    color: #333;
+    a {
+      cursor: pointer;
+      > i {
+        color: #333;
+
+        -moz-transition: all 400ms ease-out;
+        -webkit-transition: all 400ms ease-out;
+        transition: all 400ms ease-out;
+        &.rotate-180 {
+          -ms-transform: rotate(180deg);
+          -moz-transform: rotate(180deg);
+          -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  &[data-toggle-panel-status='invisible'] {
+    > h2 {
+      color: #6a6a6a;
+      a > i {
+        color: #6a6a6a;
+      }
+    }
+  }
+
+  /* make icon more prevalent on slides entry*/
+  &.ccm-slide-entry {
+    > h2 a[data-toggle-panel-icon-wrapper] {
+      /* open */
+      padding: 3px;
+      background-color: #fdfdfd;
+      border-bottom: 1px solid #333;
+    }
+    &[data-toggle-panel-status='invisible'] {
+      > h2 a[data-toggle-panel-icon-wrapper] {
+        /* close */
+        background-color: #f0f0f0;
+        border-bottom: 1px solid #a6a6a6;
+      }
+    }
+  }
+}
