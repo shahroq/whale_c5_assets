@@ -3,7 +3,7 @@
  * button should contain following attributes
  *    data-template-button
  *    data-template-button-template="..."
- *    data-template-button-target="#target-to-inject template"
+ *    data-template-button-target="#target-to-inject template" // for line break: use <br/>
  */
 
 const templateButton = function () {
@@ -24,7 +24,7 @@ const templateButton = function () {
     const target = document.querySelector(`[name="${e.target.dataset.templateButtonTarget}"]`);
 
     if (target) {
-      target.value = template ? template : '';
+      target.value = template ? template.replaceAll('<br/>', '\r\n') : '';
     }
   }
 };

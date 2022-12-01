@@ -5,7 +5,9 @@
  *    data-api-caller-button
  *    data-api-caller-button-uri=""
  *    data-api-caller-button-confirmation="" // leave it empty for intending not to be confirmed
- *    data-api-caller-button-form-ids="" // form ids to pass as query string, separated by comma
+ *    data-api-caller-button-form-id="" // form id
+ *    data-api-caller-button-form-ids="" // form element ids to pass as query string, separated by comma
+ *    data-api-caller-button-msg-timeout=5000 // in ms/afterthis, the msg will fade out/set zero for no fadedout
  */
 
 const apiCallerButton = function () {
@@ -24,10 +26,7 @@ const apiCallerButton = function () {
 
   function handleEvent(e) {
     // negate clause (in case of the btn or icon inside clicked)
-    if (
-      !e.target.hasAttribute(UISelectors.attr) &&
-      !e.target.parentNode.hasAttribute(UISelectors.attr) 
-    ) return;
+    if (!e.target.hasAttribute(UISelectors.attr) && !e.target.parentNode.hasAttribute(UISelectors.attr)) return;
 
     e.preventDefault();
 
@@ -36,20 +35,31 @@ const apiCallerButton = function () {
 
     const url = btn.dataset.apiCallerButtonUri;
     const confirmation = btn.dataset.apiCallerButtonConfirmation;
+    const formId = btn.dataset.apiCallerButtonFormId;
     const formIds = btn.dataset.apiCallerButtonFormIds;
+    const msgTimeout = btn.dataset.apiCallerButtonMsgTimeout ? btn.dataset.apiCallerButtonMsgTimeout : 5000;
 
     if (!url) return;
-    
+
     if (confirmation && !confirm(confirmation)) return;
 
-    // get & prepare form values in order to send them to api
     let data = {};
+
+    // from elements: get & prepare form values in order to send them to api
     if (formIds) {
       formIds.split(',').forEach((elemId) => {
         let elem = document.getElementById(elemId);
         if (elem) data[elem.name] = elem.value;
       });
     }
+
+    // from form
+    const form = document.getElementById(formId);
+    if (form) {
+      const formData = new FormData(form);
+      for (const [key, value] of formData) data[key] = value;
+    }
+    data = { data };
 
     // call the api via fecth
     /*
@@ -62,8 +72,8 @@ const apiCallerButton = function () {
 
         // show an alert reporting the status
         data.success 
-          ? displayAlert(data.msg_summary, 'info') 
-          : displayAlert(data.msg_error, 'danger');
+          ? displayAlert(data.msg_summary, 'info', msgTimeout) 
+          : displayAlert(data.msg_error, 'danger', msgTimeout);
 
         // enable btn
         toggleButton(btn, 'enabled');
@@ -81,13 +91,15 @@ const apiCallerButton = function () {
       },
       success: function (rslt) {
         // show an alert reporting the status
-        rslt.success ? displayAlert(rslt.msg_summary, 'info') : displayAlert(rslt.msg_error, 'danger');
+        rslt.success
+          ? displayAlert(rslt.msg_summary, 'info', msgTimeout)
+          : displayAlert(rslt.msg_error, 'danger', msgTimeout);
 
         // enable btn
         toggleButton(btn, 'enabled');
       },
       error: function () {
-        displayAlert('Unexpected Error', 'danger');
+        displayAlert('Unexpected Error', 'danger', msgTimeout);
 
         // enable btn
         toggleButton(btn, 'enabled');
@@ -117,7 +129,7 @@ const apiCallerButton = function () {
     }
   }
 
-  function displayAlert(msg, type = 'info') {
+  function displayAlert(msg, type = 'info', msgTimeout) {
     const containerClass = 'whale-container';
 
     const alertDiv = document.createElement('div');
@@ -131,7 +143,7 @@ const apiCallerButton = function () {
 
     document.querySelector(`.${containerClass}`).insertAdjacentElement('afterbegin', alertDiv);
 
-    setTimeout(() => $(alertDiv).fadeOut(), 3000);
+    if (msgTimeout > 0) setTimeout(() => $(alertDiv).fadeOut(), msgTimeout);
   }
 };
 

@@ -18,6 +18,11 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+
+    &::after {
+      clear: both;
+    }
+
     li {
       padding: 0 15px 15px 0;
       float: left;
@@ -66,10 +71,6 @@
   &:hover {
     text-decoration: none;
   }
-}
-
-.label.label-default:not(.label-success) {
-  background-color: #ddd;
 }
 
 .beat {

@@ -21,7 +21,7 @@ const livesearch = function () {
     attrFormPod: 'data-livesearch-form-pod',
     attrInputQuery: 'data-livesearch-input',
     atrLength: 'data-livesearch-length',
-    icon: 'span.fa',
+    attrIcon: 'data-livesearch-icon',
   };
 
   // elements:
@@ -39,7 +39,7 @@ const livesearch = function () {
 
   const inputQuery = formPod.querySelector(`[${UISelectors.attrInputQuery}]`),
     elemLength = formPod.querySelector(`[${UISelectors.atrLength}]`),
-    elemIcon = formPod.querySelector(UISelectors.icon);
+    elemIcon = formPod.querySelector(`[${UISelectors.attrIcon}]`);
 
   // return if required elems are not included in the DOM
   if (!inputQuery || !elemLength || !elemIcon) return;
@@ -127,22 +127,24 @@ const livesearch = function () {
 
     // cosmetics
     formPod.classList.remove('has-success', 'has-error');
-    elemIcon.classList.remove('fa-remove');
+    inputQuery.classList.remove('is-invalid'); // bs5
+    elemIcon.classList.remove('fa-times');
 
     if (!query && len === rsltLengthTotal) {
       // do nothing
     } else if (len === 0) {
       formPod.classList.add('has-error');
-      elemIcon.classList.add('fa-remove');
+      inputQuery.classList.add('is-invalid'); // bs5
+      elemIcon.classList.add('fa-times');
     } else {
       // found something: between 1 & total-1
       formPod.classList.add('has-success');
-      elemIcon.classList.add('fa-remove');
+      elemIcon.classList.add('fa-times');
     }
   }
 
   function clearQuery(e) {
-    if (e.target.classList.contains('fa-remove')) {
+    if (e.target.classList.contains('fa-times')) {
       inputQuery.value = '';
 
       // dispatch keyup event on tf manually

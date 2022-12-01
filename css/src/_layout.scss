@@ -8,7 +8,6 @@ form.ccm-search-fields {
 a {
   /* firefox outline (dotted border) */
   outline: none;
-  margin-left: 5px;
   i {
   }
 }
@@ -19,29 +18,33 @@ a {
 }
 .row:first-child {
 }
-h2 {
-  margin-top: 0px !important;
-  margin-bottom: 0px !important;
-  font-size: 24px !important;
-  font-weight: bold !important;
-  line-height: 30px !important;
-  a {
-    color: #333 !important;
-    font-size: 15px;
-    line-height: 30px;
-    i {
+.well {
+  > h2 {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    line-height: 30px !important;
+    a {
+      color: #333 !important;
       font-size: 15px;
-      font-weight: bold;
       line-height: 30px;
+      margin-left: 5px;
+      i {
+        font-size: 15px;
+        font-weight: bold;
+        line-height: 30px;
+      }
     }
   }
-}
-hr {
-  margin-bottom: 10px !important;
-  margin-top: 10px !important;
-  border-color: #ddd !important;
-  &.internal {
-    border-width: 0 !important;
+
+  hr {
+    margin-bottom: 10px !important;
+    margin-top: 10px !important;
+    border-color: #ddd !important;
+    &.internal {
+      border-width: 0 !important;
+    }
   }
 }
 .control-label {
@@ -66,10 +69,10 @@ i.move-row {
   cursor: move;
 }
 .well.dark {
-  background-color: #ececec;
+  background-color: #ececec !important;
 }
 .nav-tabs input[type='checkbox'] {
-  margin: 0 !important;
+  /* margin: 0 !important; */
 }
 .redactor-editor {
   background-color: white;

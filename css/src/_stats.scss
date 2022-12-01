@@ -117,10 +117,12 @@ img.flag {
 
 .fa.f-right {
   float: right;
-  opacity: 0.5;
-}
-.fa.f-right:after {
-  clear: both;
+  opacity: 0.25;
+  font-size: 16px;
+
+  &:after {
+    clear: both;
+  }
 }
 
 textarea#embed {

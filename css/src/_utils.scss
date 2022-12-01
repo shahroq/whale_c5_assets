@@ -3,7 +3,7 @@
  */
 
 // spacing
-$sizes: 0 0, 2 2px, 5 5px;
+$sizes: 0 0, 2 2px, 5 5px, 10 10px, 20 20px;
 $directions: 'l' 'left', 'r' 'right', 't' 'top', 'b' 'bottom';
 
 @each $s_abr, $s in $sizes {
@@ -45,5 +45,26 @@ a.disabled {
   i {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+}
+
+// labels from bs3, for bs5
+.label {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+
+  &.label-success {
+    background-color: #5cb85c;
+  }
+  &.label-default:not(.label-success) {
+    background-color: #ddd;
   }
 }

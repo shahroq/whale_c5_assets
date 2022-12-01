@@ -8,7 +8,7 @@
  */
 
 const toggleForm = function () {
-  const version = '2.0.0';
+  const version = '2.1.0';
   // console.log(`toggleForm version ${version}`);
 
   const UISelectors = {
@@ -22,18 +22,19 @@ const toggleForm = function () {
   document.body.addEventListener('click', handleEvent, true); // for checkboex
 
   // initialization
-  document
-    .querySelectorAll(`[${UISelectors.attr}]`)
-    .forEach((elem) => {
-      switch (elem.type) {
-        case 'checkbox':
-          elem.dispatchEvent(new Event('click')); // initial values
-          break;
-        case 'select-one':
-          elem.dispatchEvent(new Event('change')); // initial values
-          break;
-      }
-    });
+  document.querySelectorAll(`[${UISelectors.attr}]`).forEach((elem) => {
+    switch (elem.type) {
+      case 'checkbox':
+        // elem.dispatchEvent(new Event('click')); // initial values
+        handleEvent({
+          target: elem,
+        });
+        break;
+      case 'select-one':
+        elem.dispatchEvent(new Event('change')); // initial values
+        break;
+    }
+  });
 
   function handleEvent(e) {
     // negate clauses
@@ -43,7 +44,7 @@ const toggleForm = function () {
     // for combos on click event
     if ((e.target.type === 'select-one') & (e.type === 'click')) return;
 
-    e.stopPropagation();
+    (e instanceof Event) && e.stopPropagation();
 
     let targetElems = getTargets(e);
 
@@ -51,20 +52,16 @@ const toggleForm = function () {
       let active = isActive(e);
 
       // toggle stripe class
-      active
-        ? targetElem.classList.remove(UISelectors.classStripe)
-        : targetElem.classList.add(UISelectors.classStripe);
+      active ? targetElem.classList.remove(UISelectors.classStripe) : targetElem.classList.add(UISelectors.classStripe);
 
       // find all form elements in the area and make them read-only
-      targetElem
-        .querySelectorAll(UISelectors.tagsFormElems)
-        .forEach((formElem) => {
-          if (formElem !== e.target) {
-            formElem.tagName !== 'BUTTON'
-              ? formElem.toggleAttribute('readonly', !active)
-              : formElem.toggleAttribute('disabled', !active);
-          }
-        });
+      targetElem.querySelectorAll(UISelectors.tagsFormElems).forEach((formElem) => {
+        if (formElem !== e.target) {
+          formElem.tagName !== 'BUTTON'
+            ? formElem.toggleAttribute('readonly', !active)
+            : formElem.toggleAttribute('disabled', !active);
+        }
+      });
     });
   }
 
@@ -79,13 +76,9 @@ const toggleForm = function () {
       targetElems.push(e.target.closest(e.target.dataset.toggleFormTarget));
     } else if (
       e.target.closest('.ccm-slide-entry') &&
-      e.target
-        .closest('.ccm-slide-entry')
-        .querySelectorAll(e.target.dataset.toggleFormTarget).length
+      e.target.closest('.ccm-slide-entry').querySelectorAll(e.target.dataset.toggleFormTarget).length
     ) {
-      targetElems = e.target
-        .closest('.ccm-slide-entry')
-        .querySelectorAll(e.target.dataset.toggleFormTarget);
+      targetElems = e.target.closest('.ccm-slide-entry').querySelectorAll(e.target.dataset.toggleFormTarget);
     } else if (document.querySelectorAll(e.target.dataset.toggleFormTarget).length) {
       targetElems = document.querySelectorAll(e.target.dataset.toggleFormTarget);
     }
@@ -104,9 +97,7 @@ const toggleForm = function () {
         if (e.target.hasAttribute('data-toggle-form-checkbox-reverse')) active = !active;
         break;
       case 'select-one':
-        active = JSON.parse(
-          e.target.options[e.target.selectedIndex].dataset.toggleFormChecked
-        );
+        active = JSON.parse(e.target.options[e.target.selectedIndex].dataset.toggleFormChecked);
         break;
     }
 
